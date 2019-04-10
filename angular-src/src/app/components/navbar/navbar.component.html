@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+  <div class="sidebar-toggler ml-4">
+    <a class="btn nav-link" (click)="toggleSidebar()"><i class="fa fa-navicon"></i></a>
+  </div>
+  <div class="navbar-header pl-2 pr-2 text-center">
+    <a class="navbar-brand m-0 text-uppercase w-100" href="#">
+
+      <span class="ml-1">Book Store</span>
+    </a>
+  </div>
+  <ul *ngIf="authService.loggedIn()" class="navbar-nav flex-fill mt-1 align-items-center left-nav">
+    <li class="nav-item navicon">
+      <a class="btn nav-link" (click)="toggleSidebarPin()"><i class="fa fa-navicon"></i></a>
+    </li>
+   
+  </ul>
+  <div class="nav-toggler-right mr-4 d-md-none" >
+    <button class="" type="button"(click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+
+      <img src="./assets/img/user.jpg" class="img-fluid" alt="">
+    </button>
+    <span class="nav-alert bg-danger"></span>
+  </div>
+
+  <div class="collapse navbar-collapse right-nav" id="collapseBasic" [collapse]="isCollapsed">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/dashboard']">Dashboard </a>
+      </li>
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/profile']">Profile </a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/login']">Login </a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/register']">Register</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.loggedIn()"><a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+      </li>
+    </ul>
+    
+  </div> 
+
+</nav>

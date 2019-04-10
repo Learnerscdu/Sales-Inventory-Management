@@ -1,0 +1,7 @@
+<div class="jumbotron text-center">
+  <h1>SALES INVENTORY MANAGEMENT</h1>
+  <p class="lead">BOOKSTORE</p>
+  <div *ngIf="!authService.loggedIn()">
+    <a class="btn btn-primary" [routerLink]="['/register']">Register</a> <br> <br> <a class="btn btn-dark" [routerLink]="['/login']">Login</a>
+  </div>
+</div>
