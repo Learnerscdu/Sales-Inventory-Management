@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   password: String;
   location: String;
   locations: any = [];
+  isSelected: any;
 
   constructor(
     private validateService: ValidateService,
@@ -24,6 +25,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.getLocation();
+  }
+
+  options(data) {
+    this.isSelected = data;
+    console.log(this.isSelected);
   }
 
   onRegisterSubmit() {
@@ -36,35 +42,40 @@ export class RegisterComponent implements OnInit {
     console.log(user);
 
     // Required Fields
-    if(!this.validateService.validateRegister(user)) {
-      this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
+    if (!this.validateService.validateRegister(user)) {
+      this.flashMessage.show('Please fill in all fields', { cssClass: 'alert-danger', timeout: 3000 });
       return false;
     }
 
     // Validate Email
-    if(!this.validateService.validateEmail(user.email)) {
-    this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
+    if (!this.validateService.validateEmail(user.email)) {
+      this.flashMessage.show('Please use a valid email', { cssClass: 'alert-danger', timeout: 3000 });
       return false;
     }
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {
       console.log(data);
-    if(data.success == true) {
-      this.flashMessage.show('You are now registered and can now login', {cssClass: 'alert-success', timeout: 3000});
-      this.router.navigate(['/login']);
-    } else {
-      this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 3000});
-      this.router.navigate(['/register']);
-    }
-  });
+      if (data.success == true) {
+        this.flashMessage.show('You are now registered and can now login', { cssClass: 'alert-success', timeout: 3000 });
+        this.router.navigate(['/login']);
+      } else {
+        this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+        this.router.navigate(['/register']);
+      }
+    });
   }
 
   getLocation() {
     this.authService.getLocations().subscribe(data => {
       data.data.forEach(element => {
-        this.locations.push(element.name);
+        this.locations.push(
+          {
+            name: element.name,
+            _id: element._id
+          });
       });
+      console.log(this.locations);
     })
   }
 }

@@ -68,6 +68,63 @@ export class AuthService {
       .pipe(map(res => res.json()));
   }
 
+  getBooksByLocation(data) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.appService.baseUrl() + 'books/get_books_by_location', data, {headers: headers})
+    .pipe(map(res=>res.json()));
+  }
+
+  addBooks (data) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.appService.baseUrl() + 'books/add_book', data, { headers: headers })
+    .pipe(map(res => res.json()));
+  }
+
+  updateBook (data) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.appService.baseUrl() + 'books/update_book', data, { headers: headers })
+    .pipe(map(res => res.json()));
+  }
+
+  removeBook (data) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.appService.baseUrl() + 'books/remove_book', data, { headers: headers })
+    .pipe(map(res => res.json()));
+  }
+
+  getAll = (searchParams): Observable<any> =>{
+    
+    if (searchParams.page) {
+      searchParams.skip = searchParams.limit * (searchParams.page - 1);
+      delete searchParams.page;
+    }
+
+    if (!searchParams.limit) {
+      searchParams.skip = 0;
+      searchParams.limit = 20;
+    }
+
+    if (!searchParams.sort) {
+      searchParams.sort = '-created';
+    }
+
+    const queryParams = new URLSearchParams();
+
+    for (const key in searchParams) {
+      if (searchParams.hasOwnProperty(key)) {
+        queryParams.set(key, searchParams[key]);
+      }
+    }
+    console.log(queryParams, 'queryParams');
+    return this.http.post(this.appService.baseUrl() + 'books/get_all_books_employee', {search: searchParams})
+    .pipe(map(res => res.json()));
+    
+  }
+
   storeUserData(token, user) {
     
     localStorage.setItem('id_token', token);

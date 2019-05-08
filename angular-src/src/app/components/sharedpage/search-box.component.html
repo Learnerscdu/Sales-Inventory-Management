@@ -1,0 +1,17 @@
+<form
+  novalidate
+  [formGroup]="searchForm" style = "padding-bottom:50px;">
+  
+  <!-- <input
+    class="form-control"
+    name="searchTerm"
+    placeholder="Search..."
+    type="search"
+    [formControl]="searchForm.get('searchTerm')"> -->
+
+
+  <input style="float: right;width:300px;height:40px;" matInput placeholder="Search..." class="search_franchisees"   name="searchTerm"  [formControl]="searchForm.get('searchTerm')">
+  <!-- <mat-icon class="from-inside-icon">search</mat-icon> -->
+  <img class="from-inside-icon" src="../../../assets/images/carz/icons/search.svg"   alt="">
+ 
+</form>

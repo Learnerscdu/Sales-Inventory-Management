@@ -23,10 +23,12 @@ const BooksSchema = mongoose.Schema({
     publication_year: Date,
     price: Number,
     availability_location: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'locations',
         required: true
     },
-    quantity: Number
+    quantity: Number,
+    cover_pic: String
 }, { timestamps: true })
 
 mongoose.exports = mongoose.model('books', BooksSchema);

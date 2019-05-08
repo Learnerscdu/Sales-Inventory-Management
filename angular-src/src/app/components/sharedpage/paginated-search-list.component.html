@@ -1,0 +1,120 @@
+<app-search-box
+  [searchTerm]="searchTerm"
+  (searchChanged)="changePage({search: $event.searchTerm, page: 1})">
+</app-search-box>
+
+
+<!-- <div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div> -->
+
+
+
+
+<div *ngIf="items && loaded">
+  <!-- <div> -->
+    <!-- <div class="row"> -->
+      <!--
+      <div class="col-sm-4">
+      <div class="form-group">
+        <label for="sort">Sort</label>
+        <select
+          class="form-control"
+          id="sort"
+          name="sort"
+          (change)="changePage({page: 1})"
+          [(ngModel)]="sort">
+          <option
+            *ngFor="let field of sortFields"
+            value="{{field.fieldName}}">
+            {{field.displayName}} Ascending
+          </option>
+          <option
+            *ngFor="let field of sortFields"
+            value="-{{field.fieldName}}">
+            {{field.displayName}} Descending
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="limit">Limit</label>
+        <select
+          class="form-control"
+          id="limit"
+          name="limit"
+          (change)="page = 0; changePage()"
+          [(ngModel)]="limit">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+    -->
+    <!--
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select
+          class="form-control"
+          id="category"
+          name="category"
+          (change)="changePage({category: $event.category, page: 1})"
+          [(ngModel)]="category">
+          <option value="">select</option>
+          <option value="beauty-fashion-lifestyle">Beauty/Fashion/Lifestyle</option>
+          <option value="entrepreneurship">Entrepreneurship</option>
+          <option value="health">Health</option>
+          <option value="not-asked-but-important">Not asked but Important</option>
+          <option value="pre-marital-sex-or-contraceptives">Pre-marital sex/contraceptives</option>
+          <option value="safety-security">Safety and Security</option>
+          <option value="pregnancy">Pregnancy</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+    -->
+    <!-- </div> -->
+    <!-- <div class="item-count">
+      {{currentStart}} through {{currentEnd}} of {{count}}
+      <span *ngIf="searchTerm">for search term "{{searchTerm}}"</span>
+      <span *ngIf="queryParams.user">by user {{queryParams.username}}</span>
+    </div> -->
+
+  <!-- </div> -->
+  <ng-content></ng-content>
+  <div class="pull-right margin-right-15">
+    <!-- Setting (pageChanged) again here would make it fire twice on page changes -->
+    <pagination
+      class="pagination-md"
+      firstText="&laquo;"
+      lastText="&raquo;"
+      nextText="&rsaquo;"
+      previousText="&lsaquo;"
+      [maxSize]="9"
+      [boundaryLinks]="true"
+      [itemsPerPage]="limit"
+      [(ngModel)]="currentPage"
+      (pageChanged)="changePage($event)"
+      [totalItems]="count">
+   </pagination>
+    <!-- <div>
+      {{currentStart}} through {{currentEnd}} of {{count}}
+      <span *ngIf="searchTerm">for search term "{{searchTerm}}"</span>
+      <span *ngIf="queryParams.user">by user {{queryParams.username}}</span>
+    </div> -->
+  </div>
+</div>
+
+<div *ngIf="!items || !loaded" class="text-center noleads_stages" >
+  <div class="spacer-sm"></div>
+   <div class="spacer-md"></div>
+  <p class="text-center no-files-main-head">No records are available</p>
+</div>
+
+<ngx-spinner [bdColor]="spinnerConfig.bdColor" [type]="spinnerConfig.type" [size]="spinnerConfig.size" [color]="spinnerConfig.color"></ngx-spinner>

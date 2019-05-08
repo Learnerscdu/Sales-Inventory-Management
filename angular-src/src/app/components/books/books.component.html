@@ -1,0 +1,62 @@
+<div class="row">
+
+  <div class="col-md-12">
+
+    <app-paginated-search-list max-size="5" [listRetriever]="getlist" #list>
+
+      <div *ngIf="!list" class="text-center noleads_stages">
+        <div class="spacer-sm"></div>
+        <div class="spacer-md"></div>
+        <p class="text-center no-files-main-head">No Books are available</p>
+      </div>
+      <div *ngIf="list">
+        <div>
+
+          <div class="row">
+            <div class="col-sm-3" *ngFor="let book of list.items; let i = index">
+              <div class="card-deck" style="padding-top: 20px;">
+                <div class="card">
+
+                  <div class="image_top">
+                    <img class="card-img-top" src={{book.cover_pic}}>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{book.title}}</h5>
+                    <p class="card-text">Price : {{book.price | currency }}</p>
+                    <p class="card-text">Author : {{book.author}}</p>
+                    <p class="card-text">Genre : {{book.genre}}</p>
+                    <p class="card-text">Quantity : {{book.quantity}}</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="col-lg-5">
+                      <div class="input-group">
+                        <span class="input-group-btn" style="width:31px;">
+                          <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus"
+                            data-field="">
+                            <span class="">-</span>
+                          </button>
+                        </span>
+                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10"
+                          min="1" max="100">
+                        <span class="input-group-btn">
+                          <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus"
+                            data-field="">
+                            <span class="">+</span>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </app-paginated-search-list>
+
+  </div>
+</div>

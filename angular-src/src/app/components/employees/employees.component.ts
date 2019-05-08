@@ -51,7 +51,7 @@ export class EmployeesComponent implements OnInit {
         this.modalRef.hide();
       }
       else {
-        this.flashMessage.show(data.message, {cssClass: 'alert-danger', timeout: 3000});
+        this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['/employees']);
       }
     })

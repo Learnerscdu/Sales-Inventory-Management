@@ -1,0 +1,35 @@
+.in_shared{
+  background: #fff;
+  position: absolute;
+  top: -78px;
+  width: 250px;
+  right: 254px;
+  height: 41px;
+  border: 1px solid #ebebeb;
+  line-height: 41px;
+  padding-left: 15px;
+  border-radius: 4px;
+}
+.in_shared .mat-form-field-infix {
+  height: 41px !important;
+}
+.in_shared .mat-form-field-infix {
+  border-radius: 5px !important;
+}
+
+.audit_management_search.in_shared{
+  background: #fff;
+  position: absolute;
+  top: 35px;
+  width: 250px;
+  right: 35px;
+  height: 41px;
+  border: 1px solid #ebebeb;
+  line-height: 41px;
+  padding-left: 15px;
+  border-radius: 4px;
+}
+.library_search.in_shared{
+  top: 8px;
+  right: 8px;
+}

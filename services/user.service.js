@@ -17,6 +17,10 @@ const findUserEmail = (email) => {
   return User.findOne(query).exec(); 
 }
 
+const findUserLocation = (data) => {
+  return User.findOne(data).exec();
+}
+
 const removeEmployee = (query) => {
   return Employee.remove(query).exec();
 }
@@ -26,5 +30,6 @@ module.exports = {
   createEmployee,
   getEmployees,
   findUserEmail,
-  removeEmployee
+  removeEmployee,
+  findUserLocation
 }

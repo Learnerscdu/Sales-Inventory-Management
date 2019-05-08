@@ -6,6 +6,7 @@ const config = require('../config/database');
 const User = require('../models/user');
 const mongoose = require('mongoose');
 const Locations = mongoose.model('locations');
+const HttpStatus = require('http-status-codes');
 
 router.post('/add_location', (req, res) => {
     let data = req.body;

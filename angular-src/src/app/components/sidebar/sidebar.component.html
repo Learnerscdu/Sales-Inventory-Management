@@ -30,42 +30,25 @@
             <span>Employees</span>
           </a>
         </li>
-      <!-- <li>
-        <a href="#" routerLink="/forms">
-          <i class="fa fa-diamond"></i>
-          <span>Forms</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/tables">
-          <i class="fa fa-table"></i>
-          <span>Tables</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/typography">
-          <i class="fa fa-align-center"></i>
-          <span>Typography</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/maps">
-          <i class="fa fa-globe"></i>
-          <span>Maps</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/notifications">
-          <i class="fa fa-bell-o"></i>
-          <span>Notifications</span>
-        </a>
-      </li> -->
+        <li class="active">
+          <a href="#" routerLink="/warehouse">
+            <i class="fa fa-tv"></i>
+            <span>Warehouse</span>
+          </a>
+        </li>
+     
     </ul>
     <ul *ngIf="authService.isEmployee()">
         <li class="active">
           <a href="#" routerLink="/dashboard">
             <i class="fa fa-tv"></i>
             <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="#" routerLink="/books">
+            <i class="fa fa-tv"></i>
+            <span>Books</span>
           </a>
         </li>
     </ul>    

@@ -1,0 +1,123 @@
+<h4 class="text-muted mb-4">Books </h4>
+<button type="button" class="btn btn-primary create_btn btn-lg center-block" data-toggle="modal"
+  (click)="openModal(template) "><span class="">+</span> Create</button>
+<br>
+<br>
+<div class="row mb-4">
+
+  <div class="col-md-12">
+    <div class="card border-0 rounded-0">
+      <div class="card-body">
+        <div class="card-title mb-4">
+
+        </div>
+        <div class="table-responsive-md">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">AUTHOR</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">GENRE</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">PUBLICATION YEAR</th>
+                <th scope="col">PUBLISHER</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of books; let index = index">
+                <th scope="row">{{index + 1}}</th>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.ISBN}}</td>
+                <td>{{book.genre}}</td>
+                <td>{{book.price | currency}}</td>
+                <td>{{book.publication_year | date: 'fullDate'}}</td>
+                <td>{{book.publisher}}</td>
+                <td>{{book.quantity}}</td>
+                <td>
+                  <a class="btn btn-sm btn-success rounded-0 mr-2 " (click)="openModal(template)">
+                    <i class="fa fa-pencil"></i>
+                  </a>
+                  <a class="btn btn-sm btn-danger rounded-0" (click)="removeBook(book._id)">
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Create</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form_main" #createForm="ngForm" (ngSubmit)="addBook(createForm)" ngNativeValidate>
+    
+          
+          <div class="form-group addcele">
+              <label for="cele1">TITLE</label>
+              <input type="text" class="form-control"  placeholder="Enter Name" name="title" [(ngModel)]="title"
+                required>
+          </div>
+          <div class="spacer-mini-popup"></div>
+          <div class="form-group addcele">
+            <label for="cele1">AUTHOR</label>
+            <input type="text" class="form-control"  placeholder="Enter User Name" name="author" [(ngModel)]="author"
+              required>
+          </div>
+          <div class="spacer-mini-popup"></div>
+          
+          <div class="form-group addcele">
+            <label for="cele1">GENRE</label>
+            <input type="text" class="form-control"  placeholder="Enter genre" name="genre"
+              [(ngModel)]="genre" required>
+          </div>
+
+          <div class="form-group addcele">
+            <label for="cele1">ISBN</label>
+            <input type="text" class="form-control"  placeholder="Enter ISBN" name="ISBN"
+              [(ngModel)]="ISBN" required>
+          </div>
+
+          <div class="form-group addcele">
+            <label for="cele1">PRICE</label>
+            <input type="text" class="form-control"  placeholder="Enter price" name="price"
+              [(ngModel)]="price" required>
+          </div>
+
+          <div class="form-group addcele">
+            <label for="cele1">PUBLICATION YEAR</label>
+            <input type="text" class="form-control"  placeholder="Enter publication year" name="publication_year"
+              [(ngModel)]="publication_year" required>
+          </div>
+
+          <div class="form-group addcele">
+            <label for="cele1">PUBLISHER</label>
+            <input type="text" class="form-control"  placeholder="Enter publisher" name="publisher"
+              [(ngModel)]="publisher" required>
+          </div>
+
+          <div class="form-group addcele">
+            <label for="cele1">QUANTITY</label>
+            <input type="text" class="form-control"  placeholder="Enter quantity" name="quantity"
+              [(ngModel)]="quantity" required>
+          </div>
+         
+          <button type="button" class="btn create_btn2" (click)="modalRef.hide()">Cancel</button>
+          <input type="submit" style="cursor: pointer;" class="btn btn-primary create_btn3" value="Create" />
+        </form>
+      </div>
+    
+    </ng-template>

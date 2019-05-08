@@ -101,6 +101,7 @@ router.post('/authenticate', (req, res, next) => {
               user: {
                 id: employee._id,
                 username: employee.username,
+                manager_id:employee.manager_id,
                 email: employee.email,
                 role: "employee"
               }
@@ -126,7 +127,8 @@ router.post('/authenticate', (req, res, next) => {
               name: user.name,
               username: user.username,
               email: user.email,
-              role: "manager"
+              role: "manager",
+              location: user.location
             }
           })
         } else {
@@ -174,6 +176,5 @@ router.post('/remove_employee', (req, res) => {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: "2", message: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR) });
     });
 })
-
 
 module.exports = router;

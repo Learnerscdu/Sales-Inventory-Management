@@ -11,12 +11,15 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { WarehouseComponent } from './components/warehouse/warehouse.component';
+import { BooksComponent } from './components/books/books.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'employees', component: EmployeesComponent, canActivate:[AuthGuard]},
+  {path: 'books', component: BooksComponent, canActivate:[AuthGuard]},
   {path: 'forms', component: FormsComponent, canActivate:[AuthGuard]},
   {path: 'tables', component: TablesComponent, canActivate:[AuthGuard]},
   {path: 'typography', component: TypographyComponent, canActivate:[AuthGuard]},
@@ -25,7 +28,8 @@ const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path: 'warehouse', component: WarehouseComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

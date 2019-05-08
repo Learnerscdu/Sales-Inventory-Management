@@ -33,6 +33,9 @@ import { AuthService } from './services/auth.service';
 import { SidebarService } from './services/sidebar.service';
 import { AuthGuard } from './guards/auth.guard';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { WarehouseComponent } from '../app/components/warehouse/warehouse.component';
+import { BooksComponent } from './components/books/books.component';
+import { SharedPageModule } from './components/sharedpage/sharedpage.module';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,8 @@ import { EmployeesComponent } from './components/employees/employees.component';
     HomeComponent,
     ProfileComponent,
     EmployeesComponent,
+    WarehouseComponent,
+    BooksComponent,
     
   ],
   imports: [
@@ -63,7 +68,8 @@ import { EmployeesComponent } from './components/employees/employees.component';
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
     ToastrModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SharedPageModule
     ],
   providers: [ValidateService, AuthService, AuthGuard, SidebarService],
   bootstrap: [AppComponent]

@@ -8,6 +8,8 @@ const config = require('./config/database');
 require('./models/user');
 require('./models/employees.model');
 require('./models/locations.model');
+require('./models/books.model');
+require('./models/orders.model');
 
 // Connect To Database (NEW) But not working!!!!!!!!!! (because of secret in db.js!!!!!)
 //const db = require('./config/database');
@@ -36,6 +38,8 @@ const app = express();
 
 const users = require('./routes/users');
 const locations = require('./routes/locations');
+const books = require('./routes/books');
+const orders = require('./routes/orders');
 
 // Port Number
 const port = process.env.PORT || 8080;
@@ -56,7 +60,9 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
-app.use('/locations', locations)
+app.use('/locations', locations);
+app.use('/books', books);
+app.use('/orders', orders);
 
 // Index Route
 app.get('/', (req, res) => {
